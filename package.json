@@ -1,0 +1,8 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:DRS05/calculator.git",
+  "author": "DRS05 <daan307rosies@gmail.com>",
+  "license": "MIT"
+}
