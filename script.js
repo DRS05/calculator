@@ -23,3 +23,17 @@ function divide(a, b) {
 }
 
 
+function operate(operandOne, operator, operandTwo) {
+    switch(operator) {
+        case "+":
+            return add(operandOne, operandTwo);
+        case "-":
+            return substract(operandOne, operandTwo);
+        case "*":
+            return multiply(operandOne, operandTwo);
+        case "/":
+            return divide(operandOne, operandTwo);
+        default:
+            return add(operandOne, operandTwo)
+    }
+}
