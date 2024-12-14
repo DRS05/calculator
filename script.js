@@ -61,7 +61,18 @@ function handleOperatorInput(symbol) {
 }
 
 
+function divisionByZeroError() {
+    alert("ERROR: Division by zero is undefined. The calculator has been reset.");
+
+    clearInput();
+}
+
+
 function calculateInput() {
+    if (operator === "/" && "0") {
+        divisionByZeroError();
+    }
+
     if (!(operator === "" || operandTwo === "")) {
         operandOne = `${operate(Number.parseFloat(operandOne), operator, Number.parseFloat(operandTwo))}`;
         operandTwo = "";
@@ -117,6 +128,11 @@ function isOperator(symbol) {
 }
 
 
+function isNumber(character) {
+    return (Number.parseInt(character) >= 0 && Number.parseInt(character) <= 9);
+}
+
+
 const buttonContainer = document.querySelector(".button-container");
 const displayParagraph = document.querySelector(".display-paragraph");
 
@@ -150,16 +166,13 @@ buttonContainer.addEventListener("click", event => {
 document.addEventListener("keydown", event => {
     const keyPressed = event.key;
 
-    console.log(keyPressed)
-
-    if (Number.parseInt(keyPressed) >= 0 && Number.parseInt(keyPressed) <= 9) {
+    if (isNumber(keyPressed)) {
         handleOperandInput(keyPressed);
     } else if (isOperator(keyPressed)) {
         handleOperatorInput(keyPressed);
     } else if (keyPressed === "Enter") {
         calculateInput();
     } else if (keyPressed === "Delete") {
-        console.log("Pressed Delete.")
         clearInput();
     } else if (keyPressed === ".") {
         decimalInput();
@@ -168,6 +181,6 @@ document.addEventListener("keydown", event => {
     }
 
     displayParagraph.textContent = operandOne + " " + operator + " " + operandTwo;
-})
+});
 
 
